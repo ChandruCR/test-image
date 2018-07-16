@@ -1,24 +1,32 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <screenshot :key="componentKey"/>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Screenshot from "./components/Screenshot.vue"
 
 export default {
-  name: 'app',
+  name: "app",
+  data: () => ({
+    componentKey: 1
+  }),
   components: {
-    HelloWorld
+    Screenshot
+  },
+  mounted: function() {
+    let vm = this 
+    setInterval(() => {
+      vm.componentKey++
+    }, 10000)
   }
 }
 </script>
 
 <style>
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
